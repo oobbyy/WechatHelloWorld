@@ -59,7 +59,7 @@ Page({
           url: '../userConsole/userConsole',
         })}else{
           wx.navigateTo({
-            url: '../userConsole/userConsole2',
+            url: '../userConsole/userConsole3',
           })
         }
       },
