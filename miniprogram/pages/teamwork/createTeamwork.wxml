@@ -1,0 +1,16 @@
+<view>
+      <view>
+        <checkbox-group bindchange="checkboxChange">
+          <label wx:for="{{employees}}" wx:key="{{item.value}}">
+           <label class="checkbox">
+              <view>
+              <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
+                  {{item.name}}
+             </view>
+            </label>
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+
+    <view>{{teachers.description}}</view>

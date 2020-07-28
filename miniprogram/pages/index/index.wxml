@@ -15,6 +15,22 @@
     </view>
   </view>
 
+  <!-- 上传图片 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doUpload">
+      <text>上传图片</text>
+    </view>
+    <view class="uploader-container" wx:if="{{imgUrl}}">
+      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+    </view>
+  </view>
+
+  <!-- 配置工作团队 -->
+  <view class="createTeamwork">
+    <view class="createTeamwork-text" bindtap="createTeamwork">
+      <text>配置工作团队</text>
+    </view>
+  </view>
 
   <!-- 上传图片 -->
   <view class="uploader">
