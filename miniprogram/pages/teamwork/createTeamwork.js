@@ -70,6 +70,17 @@ Page({
       }
     })
 
+    wx.cloud.callFunction({            // 要调用的云函数名称            
+      name: 'crud',            // 传递给云函数的event参数            
+      data: {              
+      },            
+      success: res => {              
+        console.log("云函数调用成功", res)
+      },            
+      fail: err => {              
+        console.error("云函数调用失败", err)                         
+       },          
+    })
   },
 
   /**
