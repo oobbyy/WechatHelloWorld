@@ -1,0 +1,14 @@
+<form bindsubmit="submitform">
+  <view class="section">
+    <view class="section__title">创建团队分配日期</view>
+    <picker mode="date" name="inputvalue" value="{{date}}" start="2020-01-01" end="2030-01-01" bindchange="bindDateChange">
+      <view class="picker">
+        当前选择: {{date}}
+      </view>
+    </picker>
+  </view>
+  <text>\n</text>
+  <view class="button-sp-area">
+        <button form-type="submit" type="primary" plain="true">确认</button>
+  </view>
+</form>

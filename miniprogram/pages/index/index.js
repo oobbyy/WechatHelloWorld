@@ -67,6 +67,32 @@ Page({
     })
   },
 
+  getTeamworkTime: function() {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        if(res.result.openid == "opV-_4gbuoWst4l25jMHo9m8FXJ4"){
+        wx.navigateTo({
+          url: '../teamwork/getTeamworkTime',
+        })}else{
+          wx.navigateTo({
+            url: '../userConsole/getTeamworkTime',
+          })
+        }
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+        wx.navigateTo({
+          url: '../deployFunctions/deployFunctions',
+        })
+      }
+    })
+  },
+
   createTeamwork: function() {
     // 调用云函数
     wx.cloud.callFunction({
@@ -83,6 +109,53 @@ Page({
             url: '../userConsole/userConsole5',
           })
         }
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+        wx.navigateTo({
+          url: '../deployFunctions/deployFunctions',
+        })
+      }
+    })
+  },
+
+  updateTeamwork: function() {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        if(res.result.openid == "opV-_4gbuoWst4l25jMHo9m8FXJ4"){
+        wx.navigateTo({
+          url: '../teamwork/createTeamwork',
+        })}else{
+          wx.navigateTo({
+            url: '../userConsole/userConsole5',
+          })
+        }
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+        wx.navigateTo({
+          url: '../deployFunctions/deployFunctions',
+        })
+      }
+    })
+  },
+
+  showTeamwork: function() {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        wx.navigateTo({
+          url: '../teamwork/showTeamwork',
+        })
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)

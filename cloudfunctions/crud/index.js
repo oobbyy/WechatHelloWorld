@@ -10,16 +10,8 @@ exports.main = async (event, context) => {
     db.collection('todos').add({
       // data 字段表示需新增的 JSON 数据
       data: {
-        // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-        description: "learn cloud database111",
-        due: new Date("2018-09-01"),
-        tags: [
-          "cloud",
-          "database"
-        ],
-        // 为待办事项添加一个地理位置（113°E，23°N）
-        location: new db.Geo.Point(113, 23),
-        done: false
+        workdate: event.workdate,
+        managers: event.managers
       },
       success: function(res) {
         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
