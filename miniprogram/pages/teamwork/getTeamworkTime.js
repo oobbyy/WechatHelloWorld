@@ -19,39 +19,27 @@ Page({
       name: 'crud', // 传递给云函数的event参数            
       data: {
         workdate: e.detail.value.inputvalue,
-        managers: [{
-            name: "aa",
-            employees: [{
-                name: "11",
-                chooseby: "aa"
+        employees: [{
+                name: "员工1",
+                chooseby: "经理A"
               },
               {
-                name: "22",
-                chooseby: "bb"
+                name: "员工2",
+                chooseby: "经理B"
               },
               {
-                name: "33",
+                name: "员工3",
+                chooseby: "经理A"
+              },
+              {
+                name: "员工4",
+                chooseby: "经理B"
+              },
+              {
+                name: "员工5",
                 chooseby: null
-              }
-            ]
-          },
-          {
-            name: "bb",
-            employees: [{
-                name: "11",
-                chooseby: "aa"
               },
-              {
-                name: "22",
-                chooseby: "bb"
-              },
-              {
-                name: "33",
-                chooseby: null
-              }
             ]
-          }
-        ]
       },
       success: res => {
         wx.showToast({

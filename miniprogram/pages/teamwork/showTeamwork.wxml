@@ -11,5 +11,21 @@
   <view class="button-sp-area">
         <button form-type="submit" type="primary" plain="true">确认</button>
   </view>
-  <view>{{show}}</view>
+  
 </form>
+
+
+<view>
+     <view>
+        <checkbox-group bindchange="checkboxChange">
+          <label wx:for="{{teamwork.employees}}" wx:key="{{item.name}}">
+           <label class="checkbox">
+              <view>
+              <checkbox value="{{item.name}}" checked="{{item.checked}}"/>
+                  {{item.name}}
+             </view>
+            </label>
+          </label>
+        </checkbox-group>
+      </view>
+</view>

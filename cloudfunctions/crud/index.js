@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
       // data 字段表示需新增的 JSON 数据
       data: {
         workdate: event.workdate,
-        managers: event.managers
+        employees: event.employees
       },
       success: function(res) {
         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
