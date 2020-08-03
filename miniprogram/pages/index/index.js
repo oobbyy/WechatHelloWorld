@@ -75,12 +75,16 @@ Page({
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
+        //匡微信ID
         if(res.result.openid == "opV-_4gbuoWst4l25jMHo9m8FXJ4"){
         wx.navigateTo({
           url: '../teamwork/getTeamworkTime',
         })}else{
-          wx.navigateTo({
-            url: '../userConsole/getTeamworkTime',
+          wx.showToast({
+            title: '没有该功能权限',
+            icon: 'none',
+            duration: 2000//持续的时间
+       
           })
         }
       },

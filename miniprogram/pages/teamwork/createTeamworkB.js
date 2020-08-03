@@ -1,37 +1,11 @@
-// miniprogram/pages/teamwork/getTeamworkTime.js
+// miniprogram/pages/teamwork/createTeamworkB.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    teamwork: ""
-  },
 
-  bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      date: e.detail.value
-    })
-  },
-
-  submitform: function (e) {
-    var that=this;
-    const db = wx.cloud.database()
-    const _ = db.command
-
-    db.collection('todos').where({
-      workdate: e.detail.value.inputvalue
-    })
-    .get({
-      success: function(res) {
-        // res.data 是包含以上定义的一条记录的数组
-        that.setData({teamwork:res.data[0]})
-        console.log(res.data)
-      }
-      
-    })
- 
   },
 
   /**
