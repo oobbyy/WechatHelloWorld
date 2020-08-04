@@ -135,8 +135,40 @@ Page({
         wx.navigateTo({
           url: '../teamwork/createTeamwork',
         })}else{
-          wx.navigateTo({
-            url: '../userConsole/userConsole5',
+          wx.showToast({
+            title: '没有该功能权限',
+            icon: 'none',
+            duration: 2000//持续的时间
+       
+          })
+        }
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+        wx.navigateTo({
+          url: '../deployFunctions/deployFunctions',
+        })
+      }
+    })
+  },
+
+  updateTeamworkB: function() {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        if(res.result.openid == "opV-_4gbuoWst4l25jMHo9m8FXJ4"){
+        wx.navigateTo({
+          url: '../teamwork/createTeamworkB',
+        })}else{
+          wx.showToast({
+            title: '没有该功能权限',
+            icon: 'none',
+            duration: 2000//持续的时间
+       
           })
         }
       },

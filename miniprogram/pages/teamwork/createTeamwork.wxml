@@ -37,7 +37,7 @@
               </label>
               <label wx:if="{{item.chooseby == '经理B'}}">
                 <view style="color:blue">
-                  <checkbox value="{{item.name}}" checked="{{item.chooseby == '经理B'}}"/>
+                  <checkbox value="{{item.name}}" checked="{{item.chooseby == '经理B'}}" disabled='disabled'/>
                     {{item.name}}　
                 </view>
               </label>

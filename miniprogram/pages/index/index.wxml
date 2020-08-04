@@ -26,7 +26,14 @@
   <!-- 配置工作团队 -->
   <view class="createTeamwork">
     <view class="createTeamwork-text" bindtap="updateTeamwork">
-      <text>配置工作团队</text>
+      <text>配置工作团队(经理A)</text>
+    </view>
+  </view>
+
+  <!-- 配置工作团队 -->
+  <view class="createTeamwork">
+    <view class="createTeamwork-text" bindtap="updateTeamworkB">
+      <text>配置工作团队(经理B)</text>
     </view>
   </view>
 

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    teamwork: ""
+    teamwork: "",
+    hiddenName:true
   },
 
   bindDateChange: function (e) {
@@ -26,7 +27,7 @@ Page({
     .get({
       success: function(res) {
         // res.data 是包含以上定义的一条记录的数组
-        that.setData({teamwork:res.data[0]})
+        that.setData({teamwork:res.data[0],hiddenName:false})
         console.log(res.data)
       }
       

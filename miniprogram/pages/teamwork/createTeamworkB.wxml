@@ -1,2 +1,88 @@
-<!--miniprogram/pages/teamwork/createTeamworkB.wxml-->
-<text>miniprogram/pages/teamwork/createTeamworkB.wxml</text>
+
+<form bindsubmit="submitform">
+  <view class="section">
+    <view class="section__title">选择团队分配的日期</view>
+    <picker mode="date" name="inputvalue" value="{{date}}" start="2020-01-01" end="2030-01-01" bindchange="bindDateChange">
+      <view class="picker">
+        当前选择: {{date}}
+      </view>
+    </picker>
+  </view>
+  <text>\n</text>
+  <view class="button-sp-area">
+        <button form-type="submit" type="primary" plain="true">查看</button>
+  </view>
+  
+</form>
+
+<view hidden="{{hiddenName}}">
+  <form bindsubmit="selectEmployee">
+  <view>
+    <view><text>当前还未被选择的人员：　　　</text></view>
+    <view>
+      <view>
+          <checkbox-group bindchange="checkboxChange">
+            <label wx:for="{{teamwork.employees}}" wx:key="name">
+            <label wx:if="{{item.chooseby == null}}">
+                <view>
+                  <checkbox value="{{item.name}}" checked="{{item.checked}}"/>
+                    {{item.name}}　
+                </view>
+              </label>
+              <label wx:if="{{item.chooseby == '经理B'}}">
+                <view style="color:blue">
+                  <checkbox value="{{item.name}}" checked="{{item.chooseby == '经理B'}}"/>
+                    {{item.name}}　
+                </view>
+              </label>
+              <label wx:if="{{item.chooseby == '经理A'}}">
+                <view style="color:red">
+                  <checkbox value="{{item.name}}" checked="{{item.chooseby == '经理A'}}" disabled='disabled'/>
+                    {{item.name}}　
+                </view>
+              </label>
+            </label>
+          </checkbox-group>
+      </view>
+    </view>
+  </view>
+    <view class="button-sp-area">
+          <text>\n</text>
+          <button form-type="submit" type="primary" plain="true">确认</button>
+    </view>
+  </form>
+
+  <view>
+    <view><text>\n</text></view>
+    <view><text>\n</text></view>
+    <view><text>以下是当前已安排的排班情况一览：　　　</text></view>
+    <text style="color:blue">经理B：　　　</text>
+    <view style="color:blue">
+      <view>
+          <checkbox-group>
+            <label wx:for="{{teamwork.employees}}" wx:key="name">
+            <label wx:if="{{item.chooseby == '经理B'}}">
+                    {{item.name}}　
+              </label>
+            </label>
+          </checkbox-group>
+      </view>
+    </view>
+    <view><text>\n</text></view>
+
+    <text style="color:red">经理A：　　　</text>
+    <view style="color:red">
+      <view>
+          <checkbox-group>
+            <label wx:for="{{teamwork.employees}}" wx:key="name">
+            <label wx:if="{{item.chooseby == '经理A'}}">
+                    {{item.name}}　
+              </label>
+            </label>
+          </checkbox-group>
+      </view>
+    </view>
+
+    <view><text>\n</text></view>
+  </view>
+</view>

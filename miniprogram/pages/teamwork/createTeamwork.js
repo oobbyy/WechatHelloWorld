@@ -37,7 +37,8 @@ Page({
   },
 
   selectEmployee: function (e) {
-    var that=this;
+    var that=this
+    var okflag = true
     const db = wx.cloud.database()
     const _ = db.command
 
@@ -64,8 +65,9 @@ Page({
             for (let j = 0, lenJ = teamB.length; j < lenJ; ++j) {
               if (employees[i].name === teamB[j]) {
                 console.log("应该弹出"+teamB[j])
+                okflag = false
                 wx.showToast({
-                  title: teamB[j]+'刚刚已被另一边安排工作，请退出重进刷新，或跳过此人',
+                  title: teamB[j]+'刚刚已被另一边安排工作，请点击"查看"刷新',
                   icon: 'none',
                   duration: 3000//持续的时间
                 })
@@ -74,35 +76,34 @@ Page({
             }
           }
         }
+        if(okflag){
+          wx.cloud.callFunction({ // 要调用的云函数名称            
+            name: 'update', // 传递给云函数的event参数            
+            data: {
+              "workdate": this.data.workdate,
+              "employees": this.data.teamwork.employees
+            },
+            success: res => {
+              wx.showToast({
+                title: '设置成功',
+                icon: 'success',
+                duration: 2000
+              })
+              console.log("云函数调用成功", res)
+            },
+            fail: err => {
+              wx.showToast({
+                title: '设置失败，请联系管理员',
+                icon: 'success',
+                duration: 2000
+              })
+              console.error("云函数调用失败", err)
+            },
+          })
+
+        }
       }
     })
-
-    console.log(this.data.workdate)
-        console.log(this.data.teamwork.employees)
-        wx.cloud.callFunction({ // 要调用的云函数名称            
-          name: 'update', // 传递给云函数的event参数            
-          data: {
-            "workdate": this.data.workdate,
-            "employees": this.data.teamwork.employees
-          },
-          success: res => {
-            wx.showToast({
-              title: '设置成功',
-              icon: 'success',
-              duration: 2000
-            })
-            console.log("云函数调用成功", res)
-          },
-          fail: err => {
-            wx.showToast({
-              title: '设置失败，请联系管理员',
-              icon: 'success',
-              duration: 2000
-            })
-            console.error("云函数调用失败", err)
-          },
-        })
-
   },
 
   checkboxChange(e) {
@@ -113,6 +114,9 @@ Page({
     for (let i = 0, lenI = employees.length; i < lenI; ++i) {
       if(values.length == 0){
         employees[i].chooseby = null
+      }
+      if(employees[i].chooseby === "经理B"){
+        continue
       }
       for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
         if (employees[i].name === values[j]) {

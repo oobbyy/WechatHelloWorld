@@ -14,47 +14,48 @@
   
 </form>
 
-<view>
-  <text style="color:red">经理A：　　　</text>
-  <view style="color:red">
-     <view>
-        <checkbox-group bindchange="checkboxChange">
-          <label wx:for="{{teamwork.employees}}" wx:key="name">
-           <label wx:if="{{item.chooseby == '经理A'}}">
-                  {{item.name}}　
-            </label>
-          </label>
-        </checkbox-group>
-     </view>
-  </view>
-  <view><text>\n</text></view>
-
-  <text style="color:blue">经理B：　　　</text>
-  <view style="color:blue">
-     <view>
-        <checkbox-group bindchange="checkboxChange">
-          <label wx:for="{{teamwork.employees}}" wx:key="name">
-           <label wx:if="{{item.chooseby == '经理B'}}">
-                  {{item.name}}　
-            </label>
-          </label>
-        </checkbox-group>
-     </view>
-  </view>
-
-  <view><text>\n</text></view>
-
-  <text>未选择：　　　</text>
+<view hidden="{{hiddenName}}">
   <view>
-     <view>
-        <checkbox-group bindchange="checkboxChange">
-          <label wx:for="{{teamwork.employees}}" wx:key="name">
-           <label wx:if="{{item.chooseby == null}}">
-                  {{item.name}}　
+    <text style="color:red">经理A：　　　</text>
+    <view style="color:red">
+      <view>
+          <checkbox-group bindchange="checkboxChange">
+            <label wx:for="{{teamwork.employees}}" wx:key="name">
+            <label wx:if="{{item.chooseby == '经理A'}}">
+                    {{item.name}}　
+              </label>
             </label>
-          </label>
-        </checkbox-group>
-     </view>
+          </checkbox-group>
+      </view>
+    </view>
+    <view><text>\n</text></view>
+
+    <text style="color:blue">经理B：　　　</text>
+    <view style="color:blue">
+      <view>
+          <checkbox-group bindchange="checkboxChange">
+            <label wx:for="{{teamwork.employees}}" wx:key="name">
+            <label wx:if="{{item.chooseby == '经理B'}}">
+                    {{item.name}}　
+              </label>
+            </label>
+          </checkbox-group>
+      </view>
+    </view>
+
+    <view><text>\n</text></view>
+
+    <text>未选择：　　　</text>
+    <view>
+      <view>
+          <checkbox-group bindchange="checkboxChange">
+            <label wx:for="{{teamwork.employees}}" wx:key="name">
+            <label wx:if="{{item.chooseby == null}}">
+                    {{item.name}}　
+              </label>
+            </label>
+          </checkbox-group>
+      </view>
+    </view>
   </view>
 </view>
-
