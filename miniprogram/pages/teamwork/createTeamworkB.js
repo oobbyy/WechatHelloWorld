@@ -19,6 +19,14 @@ Page({
   },
 
   submitform: function (e) {
+    if( e.detail.value.inputvalue == null ||  e.detail.value.inputvalue == ""){
+      wx.showToast({
+        title: '请选择日期',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     var that=this;
     const db = wx.cloud.database()
     const _ = db.command
@@ -44,6 +52,7 @@ Page({
 
     const employees = this.data.teamwork.employees
 
+    
     db.collection('todos').where({
       workdate: this.data.workdate
     })
@@ -55,13 +64,12 @@ Page({
         console.log(employeeOld)
         var teamBIndex = 0;
         for (let i = 0, lenI = employeeOld.length; i < lenI; ++i) {
-          if (employeeOld[i].chooseby === "经理A") {
+          if (employeeOld[i].chooseby === "唐喆") {
             teamB[teamBIndex++] = employeeOld[i].name;
           }
         }
-
         for (let i = 0, lenI = employees.length; i < lenI; ++i) {
-          if(employees[i].chooseby === "经理B"){
+          if(employees[i].chooseby === "孙颢铭"){
             for (let j = 0, lenJ = teamB.length; j < lenJ; ++j) {
               if (employees[i].name === teamB[j]) {
                 console.log("应该弹出"+teamB[j])
@@ -76,32 +84,32 @@ Page({
             }
           }
         }
-        if(okflag){
-            wx.cloud.callFunction({ // 要调用的云函数名称            
-              name: 'update', // 传递给云函数的event参数            
-              data: {
-                "workdate": this.data.workdate,
-                "employees": this.data.teamwork.employees
-              },
-              success: res => {
-                wx.showToast({
-                  title: '设置成功',
-                  icon: 'success',
-                  duration: 2000
-                })
-                console.log("云函数调用成功", res)
-              },
-              fail: err => {
-                wx.showToast({
-                  title: '设置失败，请联系管理员',
-                  icon: 'success',
-                  duration: 2000
-                })
-                console.error("云函数调用失败", err)
-              },
-            })
-        }
 
+        if(okflag){
+          wx.cloud.callFunction({ // 要调用的云函数名称            
+            name: 'update', // 传递给云函数的event参数            
+            data: {
+              "workdate": that.data.workdate,
+              "employees": that.data.teamwork.employees
+            },
+            success: res => {
+              wx.showToast({
+                title: '设置成功',
+                icon: 'success',
+                duration: 2000
+              })
+              console.log("云函数调用成功", res)
+            },
+            fail: err => {
+              wx.showToast({
+                title: '设置失败，请联系管理员',
+                icon: 'none',
+                duration: 2000
+              })
+              console.error("云函数调用失败", err)
+            },
+          })
+      }
       }
     })
     
@@ -118,12 +126,12 @@ Page({
       if(values.length == 0){
         employees[i].chooseby = null
       }
-      if(employees[i].chooseby === "经理A"){
+      if(employees[i].chooseby === "唐喆"){
         continue
       }
       for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
         if (employees[i].name === values[j]) {
-            employees[i].chooseby = "经理B"
+            employees[i].chooseby = "孙颢铭"
             break
         }else{
           employees[i].chooseby = null

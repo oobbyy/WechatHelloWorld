@@ -23,7 +23,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "K-云端排班",
+    "navigationBarTitleText": "排班苏州小程序",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

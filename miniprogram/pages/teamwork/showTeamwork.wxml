@@ -16,12 +16,12 @@
 
 <view hidden="{{hiddenName}}">
   <view>
-    <text style="color:red">经理A：　　　</text>
+    <text style="color:red">唐喆：　　　</text>
     <view style="color:red">
       <view>
           <checkbox-group bindchange="checkboxChange">
             <label wx:for="{{teamwork.employees}}" wx:key="name">
-            <label wx:if="{{item.chooseby == '经理A'}}">
+            <label wx:if="{{item.chooseby == '唐喆'}}">
                     {{item.name}}　
               </label>
             </label>
@@ -30,12 +30,12 @@
     </view>
     <view><text>\n</text></view>
 
-    <text style="color:blue">经理B：　　　</text>
+    <text style="color:blue">孙颢铭：　　　</text>
     <view style="color:blue">
       <view>
           <checkbox-group bindchange="checkboxChange">
             <label wx:for="{{teamwork.employees}}" wx:key="name">
-            <label wx:if="{{item.chooseby == '经理B'}}">
+            <label wx:if="{{item.chooseby == '孙颢铭'}}">
                     {{item.name}}　
               </label>
             </label>

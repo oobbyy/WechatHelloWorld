@@ -15,49 +15,136 @@ Page({
   },
 
   submitform: function (e) {
-    wx.cloud.callFunction({ // 要调用的云函数名称            
-      name: 'crud', // 传递给云函数的event参数            
-      data: {
-        "workdate": e.detail.value.inputvalue,
-        "employees": [{
-                "name": "员工1",
-                "chooseby": null
-              },
-              {
-                "name": "员工2",
-                "chooseby": null
-              },
-              {
-                "name": "员工3",
-                "chooseby": null
-              },
-              {
-                "name": "员工4",
-                "chooseby": null
-              },
-              {
-                "name": "员工5",
-                "chooseby": null
-              },
-            ]
-      },
-      success: res => {
-        wx.showToast({
-          title: '创建成功',
-          icon: 'success',
-          duration: 2000
-        })
-        console.log("云函数调用成功", res)
-      },
-      fail: err => {
-        wx.showToast({
-          title: '创建失败，请联系管理员',
-          icon: 'success',
-          duration: 2000
-        })
-        console.error("云函数调用失败", err)
-      },
+    if( e.detail.value.inputvalue == null ||  e.detail.value.inputvalue == ""){
+      wx.showToast({
+        title: '请选择日期',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+    var okflag = true;
+    var that=this;
+    const db = wx.cloud.database()
+    const _ = db.command
+    db.collection('todos').where({
+      workdate: e.detail.value.inputvalue
     })
+    .get({
+      success: function(res) {
+       
+        console.log(res.data)
+        if(res.data.length > 0)
+        okflag = false
+        if(okflag){
+          console.log(1111)
+          wx.cloud.callFunction({ // 要调用的云函数名称            
+            name: 'crud', // 传递给云函数的event参数            
+            data: {
+              "workdate": e.detail.value.inputvalue,
+              "employees": [{
+                    "name": "盛建华",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "苗威威",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "许坤",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "陈尚丰",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "盛长炯",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "纪献降",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "邓德华",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "苏国清",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "王留涛",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "张维招",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "刘理团",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "阮军",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "王检查",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "解福海",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "陈建国",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "鲍经贺",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "赵玉友",
+                    "chooseby": null
+                  },
+                  {
+                    "name": "董铁忠",
+                    "chooseby": null
+                  }
+              ]
+            },
+            success: res => {
+              wx.showToast({
+                title: '创建成功',
+                icon: 'success',
+                duration: 2000
+              })
+              console.log("云函数调用成功", res)
+            },
+            fail: err => {
+              wx.showToast({
+                title: '创建失败，请联系管理员',
+                icon: 'success',
+                duration: 2000
+              })
+              console.error("云函数调用失败", err)
+            },
+          })
+        }else{
+          wx.showToast({
+            title: '当天已发布工作团队，请在"查看工作团队"菜单中确认',
+            icon: 'none',
+            duration: 3000//持续的时间
+          })
+        }
+      }
+      
+    })
+
+    
 
 
     

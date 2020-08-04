@@ -17,6 +17,14 @@ Page({
   },
 
   submitform: function (e) {
+    if( e.detail.value.inputvalue == null ||  e.detail.value.inputvalue == ""){
+      wx.showToast({
+        title: '请选择日期',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     var that=this;
     const db = wx.cloud.database()
     const _ = db.command

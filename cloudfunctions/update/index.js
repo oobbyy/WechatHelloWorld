@@ -7,6 +7,7 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   try{
+    console.log(111111)
     db.collection('todos').where({
       workdate: event.workdate
     }).update({

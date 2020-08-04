@@ -29,15 +29,15 @@
                     {{item.name}}　
                 </view>
               </label>
-              <label wx:if="{{item.chooseby == '经理A'}}">
+              <label wx:if="{{item.chooseby == '唐喆'}}">
                 <view style="color:red">
-                  <checkbox value="{{item.name}}" checked="{{item.chooseby == '经理A'}}"/>
+                  <checkbox value="{{item.name}}" checked="{{item.chooseby == '唐喆'}}"/>
                     {{item.name}}　
                 </view>
               </label>
-              <label wx:if="{{item.chooseby == '经理B'}}">
+              <label wx:if="{{item.chooseby == '孙颢铭'}}">
                 <view style="color:blue">
-                  <checkbox value="{{item.name}}" checked="{{item.chooseby == '经理B'}}" disabled='disabled'/>
+                  <checkbox value="{{item.name}}" checked="{{item.chooseby == '孙颢铭'}}" disabled='disabled'/>
                     {{item.name}}　
                 </view>
               </label>
@@ -56,12 +56,12 @@
     <view><text>\n</text></view>
     <view><text>\n</text></view>
     <view><text>以下是当前已安排的排班情况一览：　　　</text></view>
-    <text style="color:red">经理A：　　　</text>
+    <text style="color:red">唐喆：　　　</text>
     <view style="color:red">
       <view>
           <checkbox-group>
             <label wx:for="{{teamwork.employees}}" wx:key="name">
-            <label wx:if="{{item.chooseby == '经理A'}}">
+            <label wx:if="{{item.chooseby == '唐喆'}}">
                     {{item.name}}　
               </label>
             </label>
@@ -70,12 +70,12 @@
     </view>
     <view><text>\n</text></view>
 
-    <text style="color:blue">经理B：　　　</text>
+    <text style="color:blue">孙颢铭：　　　</text>
     <view style="color:blue">
       <view>
           <checkbox-group>
             <label wx:for="{{teamwork.employees}}" wx:key="name">
-            <label wx:if="{{item.chooseby == '经理B'}}">
+            <label wx:if="{{item.chooseby == '孙颢铭'}}">
                     {{item.name}}　
               </label>
             </label>
