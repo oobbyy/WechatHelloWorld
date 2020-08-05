@@ -17,7 +17,8 @@
     "pages/teamwork/updateTeamwork",
     "pages/teamwork/getTeamworkTime",
     "pages/teamwork/showTeamwork",
-    "pages/teamwork/createTeamworkB"
+    "pages/teamwork/createTeamworkB",
+    "pages/teamwork/showEmpWork"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,0 +1,46 @@
+
+<form bindsubmit="submitform">
+  <view class="section">
+    <view class="section__title">需要查看的月份</view>
+    <picker mode="date" fields="month" name="inputvalue" value="{{date}}" start="2020-01-01" end="2030-01-01" bindchange="bindDateChange">
+      <view class="picker">
+        当前选择: {{date}}
+      </view>
+    </picker>
+  </view>
+  <view class="section">
+  <view class="section__title">需要选择的员工</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      当前选择：{{array[index]}}
+    </view>
+  </picker>
+</view>
+  <text>\n</text>
+  <view class="button-sp-area">
+        <button form-type="submit" type="primary" plain="true">查看</button>
+  </view>
+  
+</form>
+
+<view hidden="{{hiddenName}}">
+<view class='calendar'>
+<view style="display:flex;justify-content:center;">{{year}}年{{month}}月</view>
+  <view class='header'>
+    <view wx:for='{{weekdate}}' wx:key='index' >{{item}}
+      <view></view>
+    </view>
+  </view>
+ 
+  <view class='date-box'>
+    <block wx:for='{{dateArr}}' wx:key='index'>
+      <view class='{{isToday == item.isToday ? "nowDay" : ""}}'>
+        <view class='date-head' data-year='{{year}}' data-month='{{month}}' data-datenum='{{item.dateNum}}'>
+          <view>{{item.dateNum}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+ 
+</view>
+</view>
