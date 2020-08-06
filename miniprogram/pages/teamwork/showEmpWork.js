@@ -6,6 +6,7 @@ Page({
    */
   data: {
     workdate: [],
+    workdayCnt: "",
     teamwork: "",
     hiddenName:true,
     array: [],
@@ -46,6 +47,9 @@ Page({
     var that=this;
     const db = wx.cloud.database()
     const _ = db.command
+    var dateTmp = that.data.date.split("-")
+    var yearTmp = dateTmp[0]
+    var monthTmp = dateTmp[1]
     console.log(that.data.array[that.data.index])
     db.collection('todos').where({
       workdate: {
@@ -62,11 +66,10 @@ Page({
       success: function(res) {
         // res.data 是包含以上定义的一条记录的数组
         console.log(res.data)
-        console.log(that.data.date)
-
         if(res.data.length == 0){
           that.setData({
-            hiddenName:true
+            hiddenName:true,
+            workdayCnt: ""
           })
           wx.showToast({
             title: '该员工本月没有排班',
@@ -75,16 +78,19 @@ Page({
           })
         }else{
           that.setData({hiddenName:false})
-          that.dateInit()
-          console.log(that.data.dateArr)
+          that.dateInit(yearTmp,monthTmp)
+          var workdayCntTmp = 0;
           for (let i = 0, lenI = res.data.length; i < lenI; ++i) {
+            var workdateArrayTmp = res.data[i].workdate.split('-')
+            var workdateTmp = '' + workdateArrayTmp[0] + parseInt(workdateArrayTmp[1]) + parseInt(workdateArrayTmp[2])
             for (let j = 0, lenJ = that.data.dateArr.length; j < lenJ; ++j) {
-              if(res.data[i].workdate === that.data.dateArr[j].isToday){
+              if(workdateTmp === that.data.dateArr[j].isToday){
                 that.data.dateArr[j].isWorkday = true;
-                console.log(that.data.dateArr[j].isToday)
+                workdayCntTmp++;
               }
             }
           }
+
           
 
           var yearmonth = that.data.date.split("-")
@@ -96,7 +102,9 @@ Page({
             year: year,
             month: month,
             hiddenName:false,
-            textmsg: ""
+            textmsg: "",
+            dateArr: that.data.dateArr,
+            workdayCnt: "该员工本月被分配天数为："+workdayCntTmp+"天"
           })
         }
       } 
@@ -161,6 +169,7 @@ Page({
   },
 
   dateInit: function (setYear, setMonth) {
+    setMonth = setMonth - 1
     //全部时间的月份都是按0~11基准，显示月份才+1
     let dateArr = [];                       //需要遍历的日历数组数据
     let arrLen = 0;                         //dateArr的数组长度
@@ -181,15 +190,8 @@ Page({
     for (let i = 0; i < arrLen; i++) {
       if (i >= startWeek) {
         num = i - startWeek + 1;
-        month = month + 1
-        if(month < 10){
-          month = '0'+month
-        }
-        if(num < 10){
-          num = '0'+num
-        }
         obj = {
-          isToday: '' + year +'-'+ month +'-'+ num,
+          isToday: '' + year + (month+1) + num,
           dateNum: num,
           weight: 5,
           isWorkday: false

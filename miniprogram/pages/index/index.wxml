@@ -51,3 +51,6 @@
   </view>
 
 </view>
+<view class='bottom-view'>
+    声明：本程序只用作微信小程序代码研究交流，请勿用作商业用途
+</view>
