@@ -10,7 +10,7 @@
   </view>
   <view class="section">
   <view class="section__title">需要查看的员工</view>
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+  <picker bindchange="bindPickerChange" name="inputEmp" value="{{index}}" range="{{array}}">
     <view class="picker">
       当前选择：{{array[index]}}
     </view>

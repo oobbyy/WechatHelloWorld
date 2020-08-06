@@ -1,0 +1,25 @@
+
+<view>
+    <text style="font-weight:bold">发布工作团队：\n</text>
+    　　<text style="font-size:12px;">选择日期，点击确认，即可发布所选日期的工作团队，不可重复发布，发布结果可在“查看工作团队”菜单中确认，菜单权限为指定使用人员。</text>
+    <text>\n</text>
+    <text>\n</text>
+   <text style="font-weight:bold">配置工作团队：\n</text>
+    　　<text style="font-size:12px;">选择日期，点击查看，点击员工名字前的方框进行选择，选择完毕后点击页面下方确认，即可完成选人。<text>\n</text>
+    　　若员工已被其他团队选择，则无法勾选。若选人完毕无法提交，则可能在选人时，另一方团队优先提交了相同人员，因此建议重新点击查看刷新被选人员<text>\n</text>
+    　　发布结果可在“查看工作团队”菜单中确认，菜单权限为指定使用人员。</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text style="font-weight:bold">查看工作团队：\n</text>
+    　　<text style="font-size:12px;">选择日期，点击确认，即可查看当天团队分配结果。</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text style="font-weight:bold">查看成员出勤：\n</text>
+    　　<text style="font-size:12px;">选择月份，选择员工，点击查看，即可查看员工在本月被分配工作的日期。</text>
+    <text>\n</text>
+    <text>\n</text>
+</view>
+
+<view class='bottom-view'>
+    声明：本程序只用作微信小程序代码研究交流，请勿用作商业用途
+</view>

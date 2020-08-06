@@ -8,6 +8,7 @@
     <view class="list-item" bindtap="testCgi">
       <text class="request-text">{{openid}}</text>
     </view>
+    <input placeholder="" bindinput ="" value="{{openid}}"/>
   </view>
 
   <!-- 云开发用户管理指引 
